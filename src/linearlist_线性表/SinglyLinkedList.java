@@ -128,7 +128,7 @@ public class SinglyLinkedList {
 
     public Node findByValue(int value) {
         Node p = head;
-
+        // 从头开始遍历
         while (p != null && p.data != value) {
             p = p.next;
         }
@@ -143,6 +143,31 @@ public class SinglyLinkedList {
             ++pos;
         }
         return p;
+    }
+
+    /**
+     * 反转列表, 遍历法
+     */
+    public static Node reverse(Node node) {
+        Node headNode = null;
+        Node prevNode = null;
+        Node currentNode = node;
+        while (currentNode != null) {
+            // 记录下一结点
+            Node nextNode = currentNode.next;
+            // 下个结点为null, 证明当前结点就是最后结点， 让它成为头结点
+            if (nextNode == null) {
+                headNode = currentNode;
+            }
+            // 反转指针， 指向前结点
+            currentNode.next = prevNode;
+            /*
+             * 前结点， 当前结点后移
+             */
+            prevNode = currentNode;
+            currentNode = nextNode;
+        }
+        return headNode;
     }
 
     public static class Node {
