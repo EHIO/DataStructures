@@ -3,6 +3,10 @@ package linearlist_线性表;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
+/**
+ * ArrayList实现
+ * @param <E>
+ */
 public class MyArrayList<E> implements Iterable<E> {
 
     private static int DEFAULT_CAPACITY = 10;
