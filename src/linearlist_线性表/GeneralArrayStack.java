@@ -11,6 +11,9 @@ public class GeneralArrayStack<T> {
 
     private static final int DEFAULT_SIZE = 12;
     private T[] mArray;
+    /**
+     * 栈中元素的个数
+     */
     private int count;
 
     public GeneralArrayStack(Class<T> type) {

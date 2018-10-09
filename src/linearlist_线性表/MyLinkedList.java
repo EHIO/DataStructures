@@ -5,7 +5,7 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 /**
- * 链表实现
+ * 双链表实现
  */
 public class MyLinkedList<E> implements Iterable<E> {
 
