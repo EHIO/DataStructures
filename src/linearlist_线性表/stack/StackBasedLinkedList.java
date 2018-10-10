@@ -1,4 +1,4 @@
-package linearlist_线性表.queue;
+package linearlist_线性表.stack;
 
 /**
  * 基于链表实现的栈
