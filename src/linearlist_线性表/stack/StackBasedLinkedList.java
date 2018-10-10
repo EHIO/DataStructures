@@ -5,16 +5,15 @@ package linearlist_线性表.stack;
  *
  * @author Run
  */
-public class StackBasedLinkedList {
+public class StackBasedLinkedList<E> {
 
-    private Node top;
-
+    private Node<E> top;
 
     /**
      * 入栈
      */
-    public void push(int value) {
-        Node newNode = new Node(value, null);
+    public void push(E value) {
+        Node<E> newNode = new Node<>(value, null);
         if (top == null) {
             top = newNode;
         } else {
@@ -25,30 +24,51 @@ public class StackBasedLinkedList {
 
     /**
      * 出栈
-     *
      */
-    public int pop() {
+    public E pop() {
         if (top == null) {
-            return -1;
+            return null;
         }
-        int value = top.data;
+        E value = top.data;
         top = top.next;
         return value;
     }
 
-    private static class Node {
-        private int data;
+    public void printAll() {
+        Node p = top;
+        while (p != null) {
+            System.out.print(p.data + " ");
+            p = p.next;
+        }
+        System.out.println();
+    }
 
-        private Node next;
+    private static class Node<E> {
+        private E data;
 
-        public Node(int data, Node next) {
+        private Node<E> next;
+
+        Node(E data, Node next) {
             this.data = data;
             this.next = next;
         }
 
-        public int getData() {
+        public E getData() {
             return data;
         }
+    }
+
+    public static void main(String[] args) {
+        StackBasedLinkedList<Integer> stack = new StackBasedLinkedList<>();
+        stack.push(1);
+        stack.push(2);
+        stack.push(3);
+        stack.printAll();
+
+
+        stack.pop();
+        stack.pop();
+        stack.printAll();
     }
 }
 
