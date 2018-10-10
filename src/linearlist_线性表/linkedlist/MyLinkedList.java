@@ -1,4 +1,4 @@
-package linearlist_线性表;
+package linearlist_线性表.linkedlist;
 
 import java.util.ConcurrentModificationException;
 import java.util.Iterator;

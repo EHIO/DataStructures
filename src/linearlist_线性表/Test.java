@@ -9,8 +9,12 @@ public class Test {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		LinkedList list = new LinkedList();
-		System.out.println(list.size());
+		int count = 0;
+		int[] arr = new int[3];
+		for (int i = 0; i < arr.length; i++) {
+			arr[count++] = 1;
+		}
+		System.out.println(count);
 
 	}
 

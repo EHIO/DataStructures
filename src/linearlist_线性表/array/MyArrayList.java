@@ -1,4 +1,4 @@
-package linearlist_线性表;
+package linearlist_线性表.array;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;

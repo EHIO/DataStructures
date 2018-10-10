@@ -1,7 +1,7 @@
-package linearlist_线性表;
+package linearlist_线性表.queue;
 
 /**
- * 数组实现队列
+ * 基于数组实现队列
  *
  * @author Run
  */
@@ -35,12 +35,11 @@ public class ArrayQueue<T> {
 
     /**
      * 入队
-     *
      * @param ele
      * @return
      */
     public boolean enqueue(T ele) {
-        // 队列已满
+        // 尾指针等于容器容量大小时， 表示没有空间了
         if (tail == capacity) {
             return false;
         }
@@ -64,10 +63,13 @@ public class ArrayQueue<T> {
     }
 
     public static void main(String[] args) {
-        ArrayQueue queue = new ArrayQueue(10);
+        ArrayQueue queue = new ArrayQueue(5);
         queue.enqueue(1);
         queue.enqueue(2);
         queue.enqueue(3);
+        queue.enqueue(4);
+        queue.enqueue(5);
+        queue.enqueue(6);
         System.out.println(queue);
     }
 }

@@ -1,4 +1,4 @@
-package linearlist_线性表;
+package linearlist_线性表.stack;
 
 import java.lang.reflect.Array;
 
