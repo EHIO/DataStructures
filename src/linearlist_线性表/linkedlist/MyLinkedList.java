@@ -6,6 +6,9 @@ import java.util.NoSuchElementException;
 
 /**
  * 双链表实现
+ * 维护前后两个标记结点， 可以避免好多边界判断
+ *
+ * @author Run
  */
 public class MyLinkedList<E> implements Iterable<E> {
 
@@ -17,11 +20,11 @@ public class MyLinkedList<E> implements Iterable<E> {
     private int modCount;
 
     /**
-     * 头结点
+     * 头标记结点
      */
     private Node<E> beginMarker;
     /**
-     * 尾结点
+     * 尾标记结点
      */
     private Node<E> endMarker;
 
@@ -195,7 +198,8 @@ public class MyLinkedList<E> implements Iterable<E> {
         MyLinkedList mll = new MyLinkedList();
         mll.add(1);
         mll.add(2);
-        mll.set(1, 3);
+        mll.add(3);
+//        mll.set(0, 3);
 //        mll.remove(0);
 //        Node node = mll.getNode(1);
 //        Node node2 = mll.getNode(0);
