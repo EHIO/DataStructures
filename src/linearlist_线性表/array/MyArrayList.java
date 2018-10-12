@@ -9,11 +9,14 @@ import java.util.NoSuchElementException;
  */
 public class MyArrayList<E> implements Iterable<E> {
 
-    private static int DEFAULT_CAPACITY = 10;
+    private static final int DEFAULT_CAPACITY = 10;
 
+    /**
+     * 包含元素的ArrayList大小
+     */
     private int theSize;
 
-    private E[] theItems;
+    private E[] elementData;
 
 
     public MyArrayList() {
@@ -45,15 +48,15 @@ public class MyArrayList<E> implements Iterable<E> {
         if (idx < 0 || idx >= size()) {
             throw new ArrayIndexOutOfBoundsException();
         }
-        return theItems[idx];
+        return elementData[idx];
     }
 
     public E set(int idx, E newVal) {
         if (idx < 0 || idx >= size()) {
             throw new ArrayIndexOutOfBoundsException();
         }
-        E old = theItems[idx];
-        theItems[idx] = newVal;
+        E old = elementData[idx];
+        elementData[idx] = newVal;
         return old;
     }
 
@@ -62,24 +65,24 @@ public class MyArrayList<E> implements Iterable<E> {
         return true;
     }
 
-    public void add(int idx, E newVal) {
+    public void add(int idx, E element) {
         // 容量已满, 扩容
-        if (theItems.length == size()) {
+        if (elementData.length == size()) {
             ensureCapacity(size() * 2 + 1);
         }
         // 移动要插入索引位置后的元素
         for (int i = size(); i > idx; i--) {
-            theItems[i] = theItems[i - 1];
+            elementData[i] = elementData[i - 1];
         }
-        theItems[idx] = newVal;
+        elementData[idx] = element;
         theSize++;
     }
 
     public E remove(int idx) {
-        E removeItem = theItems[idx];
+        E removeItem = elementData[idx];
         // 移动被删除索引后面的元素
         for (int i = idx; i < size() - 1; i++) {
-            theItems[i] = theItems[i + 1];
+            elementData[i] = elementData[i + 1];
         }
         theSize--;
         return removeItem;
@@ -90,10 +93,10 @@ public class MyArrayList<E> implements Iterable<E> {
             return;
         }
 
-        E[] old = theItems;
-        theItems = (E[]) new Object[newCapacity];
+        E[] old = elementData;
+        elementData = (E[]) new Object[newCapacity];
         for (int i = 0; i < size(); i++) {
-            theItems[i] = old[i];
+            elementData[i] = old[i];
         }
     }
 
@@ -117,12 +120,27 @@ public class MyArrayList<E> implements Iterable<E> {
             if (!hasNext()) {
                 throw new NoSuchElementException();
             }
-            return theItems[current++];
+            return elementData[current++];
         }
 
         @Override
         public void remove() {
             MyArrayList.this.remove(current--);
         }
+    }
+
+
+    public static void main(String[] args) {
+        MyArrayList list = new MyArrayList();
+        for (int i = 0; i < 10; i++) {
+            list.add(i);
+        }
+        list.add("2");
+        list.add('c');
+        for (int i = list.size(); i > 0; i--) {
+            list.remove(i);
+        }
+        list.clear();
+        System.out.println();
     }
 }
