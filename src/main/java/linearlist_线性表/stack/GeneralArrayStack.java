@@ -1,44 +1,43 @@
 package linearlist_线性表.stack;
 
-import java.lang.reflect.Array;
 
 /**
  * 基于数组实现的栈
  *
  * @author Run
  */
-public class GeneralArrayStack<T> {
+public class GeneralArrayStack<E> {
 
-    private static final int DEFAULT_SIZE = 12;
-    private T[] mArray;
+    private static final int DEFAULT_SIZE = 10;
+    private E[] mArray;
     /**
      * 栈中元素的个数
      */
     private int count;
 
-    public GeneralArrayStack(Class<T> type) {
-        this(type, DEFAULT_SIZE);
+    public GeneralArrayStack() {
+        this(DEFAULT_SIZE);
     }
 
-    public GeneralArrayStack(Class<T> type, int size) {
-        // 不能直接使用mArray = new T[DEFAULT_SIZE];
-        mArray = (T[]) Array.newInstance(type, size);
+    public GeneralArrayStack(int size) {
+
+        mArray = (E[]) new Object[size];
         count = 0;
     }
 
     // 将val添加到栈中
-    public void push(T val) {
+    public void push(E val) {
         mArray[count++] = val;
     }
 
     // 返回“栈顶元素值”
-    public T peek() {
+    public E peek() {
         return mArray[count - 1];
     }
 
     // 返回“栈顶元素值”，并删除“栈顶元素”
-    public T pop() {
-        T ret = mArray[count - 1];
+    public E pop() {
+        E ret = mArray[count - 1];
         count--;
         return ret;
     }
@@ -51,8 +50,9 @@ public class GeneralArrayStack<T> {
     // 返回“栈”是否为空
     public boolean isEmpty() {
         return size() == 0;
-    }    // 打印“栈”
+    }
 
+    // 打印“栈”
     public void printArrayStack() {
         if (isEmpty()) {
             System.out.printf("stack is Empty\n");
@@ -65,5 +65,16 @@ public class GeneralArrayStack<T> {
             System.out.println(mArray[i]);
             i--;
         }
+    }
+
+    public static void main(String[] args) {
+        GeneralArrayStack stack = new GeneralArrayStack();
+        stack.push(1);
+        stack.push(2);
+
+        System.out.println(stack.pop());
+
+        System.out.println(stack.peek());
+        stack.printArrayStack();
     }
 }

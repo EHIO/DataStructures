@@ -48,7 +48,7 @@ public class StackBasedLinkedList<E> {
 
         private Node<E> next;
 
-        Node(E data, Node next) {
+        Node(E data, Node<E> next) {
             this.data = data;
             this.next = next;
         }
