@@ -5,6 +5,7 @@ import java.util.NoSuchElementException;
 
 /**
  * ArrayList实现
+ *
  * @param <E>
  */
 public class MyArrayList<E> implements Iterable<E> {
@@ -14,26 +15,31 @@ public class MyArrayList<E> implements Iterable<E> {
     /**
      * 包含元素的ArrayList大小
      */
-    private int theSize;
+    private int size;
 
     private E[] elementData;
 
 
     public MyArrayList() {
-        doClear();
+        size = 0;
+        elementData = newArr(DEFAULT_CAPACITY);
+    }
+
+    @SuppressWarnings("unchecked")
+    public E[] newArr(int capacity) {
+        return (E[]) new Object[capacity];
     }
 
     public void clear() {
-        doClear();
+        for (int i = 0; i < size; i++) {
+            elementData[i] = null;
+        }
+        size = 0;
     }
 
-    private void doClear() {
-        theSize = 0;
-        ensureCapacity(DEFAULT_CAPACITY);
-    }
 
     public int size() {
-        return theSize;
+        return size;
     }
 
     public boolean isEmpty() {
@@ -66,7 +72,7 @@ public class MyArrayList<E> implements Iterable<E> {
     }
 
     public void add(int idx, E element) {
-        // 容量已满, 扩容
+        // 容量已存满, 扩容
         if (elementData.length == size()) {
             ensureCapacity(size() * 2 + 1);
         }
@@ -75,7 +81,7 @@ public class MyArrayList<E> implements Iterable<E> {
             elementData[i] = elementData[i - 1];
         }
         elementData[idx] = element;
-        theSize++;
+        size++;
     }
 
     public E remove(int idx) {
@@ -84,12 +90,12 @@ public class MyArrayList<E> implements Iterable<E> {
         for (int i = idx; i < size() - 1; i++) {
             elementData[i] = elementData[i + 1];
         }
-        theSize--;
+        size--;
         return removeItem;
     }
 
     private void ensureCapacity(int newCapacity) {
-        if (newCapacity < theSize) {
+        if (newCapacity < size) {
             return;
         }
 
@@ -98,6 +104,13 @@ public class MyArrayList<E> implements Iterable<E> {
         for (int i = 0; i < size(); i++) {
             elementData[i] = old[i];
         }
+    }
+
+    public void printAll() {
+        for (Iterator iterator = this.iterator(); iterator.hasNext(); ) {
+            System.out.print(iterator.next() + " ");
+        }
+        System.out.println();
     }
 
 
@@ -135,12 +148,18 @@ public class MyArrayList<E> implements Iterable<E> {
         for (int i = 0; i < 10; i++) {
             list.add(i);
         }
-        list.add("2");
-        list.add('c');
-        for (int i = list.size(); i > 0; i--) {
+        list.printAll();
+
+        list.add("a");
+        list.add('b');
+        list.printAll();
+
+        for (int i = list.size(); i > 2; i--) {
             list.remove(i);
         }
+        list.printAll();
+
         list.clear();
-        System.out.println();
+        list.printAll();
     }
 }
