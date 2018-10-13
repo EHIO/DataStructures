@@ -1,14 +1,17 @@
 package sort;
 
+/**
+ * 排序算法之冒泡算法
+ *
+ * @author Run
+ */
 public class BubbleSort {
 
     public static void main(String[] args) {
         int[] arr = {2, 1, 3, 4, 5, 6};
         print(arr);
-        arr = bubbleSort(arr);
+        arr = bubbleSort2(arr);
         print(arr);
-
-
     }
 
     public static int[] bubbleSort(int[] arr) {
@@ -56,11 +59,10 @@ public class BubbleSort {
         return arr;
     }
 
-    private static int[] swap(int[] arr, int i, int j) {
+    private static void swap(int[] arr, int i, int j) {
         int temp = arr[i];
         arr[i] = arr[j];
         arr[j] = temp;
-        return arr;
     }
 
 
