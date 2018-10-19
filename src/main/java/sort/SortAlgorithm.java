@@ -82,11 +82,11 @@ public class SortAlgorithm {
                 // 找到需要交换的元素，记录最小元素的下标
                 if (arr[j] < arr[min]) {
                     min = j;
-                    System.out.println("需要交换元素的索引:" + min);
                 }
             }
             // 每趟比较完后找到了最小元素的下标， 进行元素交换
             if (min != i) {
+                System.out.println("最小元素的索引:" + min);
                 swap(arr, min, i);
             }
         }

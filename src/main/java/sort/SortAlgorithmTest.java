@@ -13,6 +13,17 @@ public class SortAlgorithmTest {
     }
 
     /**
+     * 选择排序
+     */
+    @Test
+    public void testSelectSort() {
+        int[] arr = {4, 5, 6, 3, 2, 1};
+        SortAlgorithm.print(arr);
+        SortAlgorithm.selectSort(arr);
+        SortAlgorithm.print(arr);
+    }
+
+    /**
      * 快速排序之挖坑法
      */
     @Test
