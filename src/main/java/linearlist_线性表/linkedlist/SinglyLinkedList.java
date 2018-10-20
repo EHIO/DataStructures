@@ -144,6 +144,7 @@ public class SinglyLinkedList<E> {
         }
         q.next = newNode;
         newNode.next = p;
+        size++;
     }
 
     public void deleteByNode(Node<E> p) {
@@ -164,6 +165,7 @@ public class SinglyLinkedList<E> {
             return;
         }
         q.next = q.next.next;
+        size--;
     }
 
     public void deleteByNode(E value) {
@@ -188,6 +190,7 @@ public class SinglyLinkedList<E> {
         } else {
             p.next = q.next.next;
         }
+        size--;
     }
 
     public Node<E> findByValue(E value) {
@@ -216,6 +219,7 @@ public class SinglyLinkedList<E> {
     }
 
     public void printAll() {
+        System.out.println("size:" + size);
         Node<E> p = head;
         while (p != null) {
             System.out.print(p.data + " ");

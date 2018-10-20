@@ -25,6 +25,15 @@ public class SinglyLinkedListTest {
     }
 
     @Test
+    public void testFindByValue() {
+        slk.add(1);
+        slk.add(2);
+        slk.printAll();
+
+        SinglyLinkedList.print(slk.findByValue(1));
+    }
+
+    @Test
     public void testAdd() {
         slk.add(1);
         slk.add(2);
@@ -45,15 +54,6 @@ public class SinglyLinkedListTest {
         slk.addLast(1);
         slk.addLast(2);
         slk.printAll();
-    }
-
-    @Test
-    public void testFindByValue() {
-        slk.add(1);
-        slk.add(2);
-        slk.printAll();
-
-        SinglyLinkedList.print(slk.findByValue(1));
     }
 
     @Test
