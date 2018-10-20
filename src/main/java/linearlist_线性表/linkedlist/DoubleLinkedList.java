@@ -17,12 +17,12 @@ public class DoubleLinkedList<E> {
     private Node<E> last;
 
     /**
-     *
+     * 链表大小
      */
     private int size;
 
     /**
-     * 列表结构被修改的次数
+     * 链表结构被修改的次数
      */
     private int modCount;
 

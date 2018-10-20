@@ -3,12 +3,27 @@ package linearlist_线性表.linkedlist;
 /**
  * 单链表
  * 单链表的插入、删除、查找操作；
+ * 添加
+ * 1、添加首、尾、指定索引处、指定索引结点前，后
  *
  * @author Run
  */
 public class SinglyLinkedList<E> {
 
+    /**
+     * 头结点指针
+     */
     public Node<E> head;
+
+    /**
+     * 尾结点指针
+     */
+    public Node<E> last;
+
+    /**
+     * 链表长度
+     */
+    public int size;
 
     public SinglyLinkedList() {
     }
@@ -17,27 +32,66 @@ public class SinglyLinkedList<E> {
         return new Node<>(value, null);
     }
 
-    public void insertToHead(E value) {
-        insertToHead(createNode(value));
+    public boolean add(E e) {
+        addLast(e);
+        return true;
     }
 
-    public void insertToHead(Node newNode) {
-        if (head == null) {
+    public void add(int index, E e) {
+        // 校验索引
+        if (index == size) {
+            addLast(e);
+        } else {
+            insertAfter(index, e);
+        }
+    }
+
+    /**
+     * 添加到头
+     *
+     * @param e
+     */
+    public void addFirst(E e) {
+        addFirst(createNode(e));
+    }
+
+    public void addFirst(Node<E> newNode) {
+        final Node<E> f = head;
+        // 头指针指向新结点
+        head = newNode;
+        if (f == null) {
+            last = newNode;
+        } else {
+            newNode.next = f;
+        }
+        size++;
+    }
+
+    /**
+     * 添加到尾
+     *
+     * @param e
+     */
+    public void addLast(E e) {
+        final Node<E> l = last;
+        final Node<E> newNode = createNode(e);
+        last = newNode;
+        if (l == null) {
             head = newNode;
         } else {
-            newNode.next = head;
-            head = newNode;
+            l.next = newNode;
         }
+        size++;
     }
 
     /**
      * 插入指定结点的后面
      *
-     * @param p
+     * @param index
      * @param value
      */
-    public void insertAfter(Node<E> p, E value) {
-        insertAfter(p, createNode(value));
+    public void insertAfter(int index, E value) {
+        insertAfter(findByIndex(index), createNode(value));
     }
 
     /**
@@ -52,19 +106,22 @@ public class SinglyLinkedList<E> {
         }
         newNode.next = p.next;
         p.next = newNode;
+        size++;
     }
 
     /**
      * 插入指定结点的前面
      *
-     * @param p
+     * @param index
      * @param value
      */
-    public void insertBefore(Node p, E value) {
-        insertBefore(p, createNode(value));
+    public void insertBefore(int index, E value) {
+        insertBefore(findByIndex(index), createNode(value));
     }
 
     /**
+     * 插入指定结点的前面
+     *
      * @param p
      * @param newNode
      */
@@ -73,7 +130,7 @@ public class SinglyLinkedList<E> {
             return;
         }
         if (p == head) {
-            insertToHead(newNode);
+            addFirst(newNode);
             return;
         }
         // 从头开始遍历
