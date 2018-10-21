@@ -18,7 +18,7 @@ public class LinkedListAlgoTest<E> {
         LinkedListAlgo.Node node = LinkedListAlgo.readyNode();
         LinkedListAlgo.printAll(node);
 
-        node = LinkedListAlgo.r(node);
+        node = LinkedListAlgo.reverse(node);
         LinkedListAlgo.printAll(node);
     }
 }
