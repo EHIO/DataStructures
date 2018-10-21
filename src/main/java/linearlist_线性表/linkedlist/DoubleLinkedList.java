@@ -81,6 +81,7 @@ public class DoubleLinkedList<E> {
      * 添加到指定结点前
      */
     public void addBefore(E e, Node<E> node) {
+        assert node != null;
         final Node pred = node.prev;
         final Node<E> newNode = new Node<>(pred, e, node);
         // 指定结点的前指针指向新结点
@@ -215,18 +216,5 @@ public class DoubleLinkedList<E> {
             this.item = item;
             this.next = next;
         }
-    }
-
-
-    public static void main(String[] args) {
-        DoubleLinkedList link = new DoubleLinkedList();
-//        link.add(1);
-//        link.add(2);
-//        link.addFirst(3);
-        link.add(0, 1);
-        link.add(1, 2);
-        link.remove(1);
-
-        System.out.println(link);
     }
 }

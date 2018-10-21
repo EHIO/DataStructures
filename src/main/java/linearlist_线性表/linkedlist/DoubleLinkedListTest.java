@@ -20,6 +20,13 @@ public class DoubleLinkedListTest {
     }
 
     @Test
+    public void testAdd() {
+        link = prepareData();
+        link.add(1, "a");
+        link.printAll();
+    }
+
+    @Test
     public void testAddFirst() {
         link.addFirst(1);
         link.addFirst("a");
