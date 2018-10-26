@@ -7,13 +7,6 @@ package sort;
  */
 public class SortAlgorithm {
 
-    public static void main(String[] args) {
-        int[] arr = {2, 1, 3, 4, 5, 6};
-        print(arr);
-        insertionSort(arr);
-        print(arr);
-    }
-
     /**
      * 冒泡排序
      * @param arr

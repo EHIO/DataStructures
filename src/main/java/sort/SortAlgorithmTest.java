@@ -13,6 +13,28 @@ public class SortAlgorithmTest {
     }
 
     /**
+     * 冒泡排序
+     */
+    @Test
+    public void testBubbleSort() {
+        int[] arr = {4, 5, 6, 3, 2, 1};
+        SortAlgorithm.print(arr);
+        SortAlgorithm.bubbleSort(arr);
+        SortAlgorithm.print(arr);
+    }
+
+    /**
+     * 插入排序
+     */
+    @Test
+    public void testInsertionSort() {
+        int[] arr = {2, 1, 3, 4, 5, 6};
+        SortAlgorithm.print(arr);
+        SortAlgorithm.insertionSort(arr);
+        SortAlgorithm.print(arr);
+    }
+
+    /**
      * 选择排序
      */
     @Test
