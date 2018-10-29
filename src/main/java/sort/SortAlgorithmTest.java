@@ -28,10 +28,32 @@ public class SortAlgorithmTest {
      */
     @Test
     public void testInsertionSort() {
-        int[] arr = {2, 1, 3, 4, 5, 6};
-        SortAlgorithm.print(arr);
+        int[] arr = new int[100000];
+        int j = 0;
+        for (int i = 100000; i > 0; i--) {
+            arr[j++] = i;
+        }
+
+        long t1 = System.currentTimeMillis();
         SortAlgorithm.insertionSort(arr);
-        SortAlgorithm.print(arr);
+        long t2 = System.currentTimeMillis();
+        System.out.println(t2 - t1);
+    }
+
+    /**
+     * 插入排序
+     */
+    @Test
+    public void testInsertionSort2() {
+        int[] arr = new int[100000];
+        int j = 0;
+        for (int i = 100000; i > 0; i--) {
+            arr[j++] = i;
+        }
+        long t1 = System.currentTimeMillis();
+        SortAlgorithm.insertionSort2(arr);
+        long t2 = System.currentTimeMillis();
+        System.out.println(t2 - t1);
     }
 
     /**
