@@ -98,7 +98,7 @@ public class SortAlgorithm {
                 j--;
             }*/
             for (int j = i; j > 0; j--) {
-                if (arr[j] < arr[j - 1]) {
+                if (arr[j - 1] > arr[j]) {
                     swap(arr, j - 1, j);
                 }
             }
@@ -118,11 +118,13 @@ public class SortAlgorithm {
             // 查找要插入的位置并移动数据
             for (; j >= 0; --j) {
                 if (arr[j] > value) {
+                    // 数据移动
                     arr[j + 1] = arr[j];
                 } else {
                     break;
                 }
             }
+            // 插入数据
             arr[j + 1] = value;
         }
     }
